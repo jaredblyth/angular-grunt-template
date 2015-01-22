@@ -30,8 +30,18 @@ module.exports = function(grunt) {
             dynamic: { 
                 files: [{
                     expand: true, // Enable dynamic expansion
-                    cwd: '<%= pkg.srcDir %>', 
-                    src: ['**/*.{png,jpg,gif,svg}'], 
+                    cwd: '<%= pkg.srcDir %>',
+                    src: ['images/{,*/}*.{png,jpg,gif}'],
+                    dest: '<%= pkg.destDir %>'
+                }]
+            }
+        },
+        svgmin: {
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= pkg.srcDir %>',
+                    src: 'images/{,*/}*.svg',
                     dest: '<%= pkg.destDir %>'
                 }]
             }
@@ -39,7 +49,10 @@ module.exports = function(grunt) {
 		uglify: {
             options: {
                 banner: '/*! <%= grunt.template.today("yyyy-mm-dd") %> */\n',
-                mangle: false
+                mangle: false,
+                compress: {
+                    drop_console: true
+                }
             },
             js: {
                 files : {
@@ -131,6 +144,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-usemin');
 	grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
+    grunt.loadNpmTasks('grunt-svgmin');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
@@ -142,6 +156,7 @@ module.exports = function(grunt) {
 		'useminPrepare',
 		'copy',
         'imagemin',
+        'svgmin',
 		'uglify',
 		'cssmin',
 		'usemin',

@@ -21,7 +21,6 @@
     "grunt-ngmin": "^0.0.3",
     "grunt-svgmin": "^0.4.0",
     "grunt-usemin": "^2.1.1",
-    "grunt-remove-logging": "0.2.0",
     "grunt-serve" : "0.1.6"
   },
   "engines": {
