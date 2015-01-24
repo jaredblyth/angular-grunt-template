@@ -31,7 +31,7 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true, // Enable dynamic expansion
                     cwd: '<%= pkg.srcDir %>',
-                    src: ['images/{,*/}*.{png,jpg,gif}'],
+                    src: ['images/{,*/}*.{png,jpg,gif}','favicon.ico'],
                     dest: '<%= pkg.destDir %>'
                 }]
             }
@@ -111,6 +111,7 @@ module.exports = function(grunt) {
                     conservativeCollapse: true,
                     collapseBooleanAttributes: true,
                     removeCommentsFromCDATA: true,
+                    removeComments: true,
                     removeOptionalTags: true
                 },
                 files: [{
